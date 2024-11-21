@@ -1,0 +1,14 @@
+{
+    "type": "object",
+    "description": "Unauthorized",
+    "properties": {
+        "type": {
+            "type": "string",
+            "example": "Validation error"
+        },
+        "errors": {
+            "type": "string",
+            "example": "Unauthorized"
+        }
+    }
+}

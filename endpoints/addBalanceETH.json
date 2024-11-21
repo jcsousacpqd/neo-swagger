@@ -1,0 +1,37 @@
+{
+    "post": {
+        "tags": ["Wallets"],
+        "summary": "Adiciona saldo de ETH na carteira do usuário",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/balanceETH/requests/walletsBalanceRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "201": {
+                "description": "Saldo Adicionado com sucesso!",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/balanceETH/responses/walletsBalanceResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

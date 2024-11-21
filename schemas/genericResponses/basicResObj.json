@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "description": "Representation of an asset registry in blockchain",
+  "properties": {
+    "idAsset": {
+      "type": "string"
+    },
+    "orgOwner": {
+      "type": "string"
+    },
+    "operation": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "data": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "groupedBy": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "groupedAssets": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

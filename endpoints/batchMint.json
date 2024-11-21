@@ -1,0 +1,27 @@
+{
+    "post": {
+        "tags": ["Batch Operations"],
+        "summary": "Mint múltiplos tokens ERC-1155 de uma vez",
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/batch/requests/batchMintRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Mint de múltiplos tokens realizado com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/batch/responses/batchMintResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

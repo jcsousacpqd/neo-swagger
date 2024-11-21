@@ -1,0 +1,68 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Wallet and Token Management API",
+        "description": "Endpoints for wallet creation, balance check, token management, and transfers.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://",
+            "description": "Main server"
+        },
+        {
+            "url": "https://",
+            "description": "Main server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Wallets",
+            "description": "Operations related to wallets"
+        },
+        {
+            "name": "Tokens",
+            "description": "Operations related to ERC-1155 tokens"
+        },
+        {
+            "name": "Transfers",
+            "description": "Token and balance transfer operations"
+        },
+        {
+            "name": "Batch Operations",
+            "description": "Batch minting and transfer of tokens"
+        }
+    ],
+    "paths": {
+        "/wallets": {
+            "$ref": "./endpoints/walletCreate.json"
+        },
+        "/wallets/{walletId}/balance": {
+            "$ref": "./endpoints/walletsBalance.json"
+        },
+        "/wallets/{walletId}/tokens": {
+            "$ref": "./endpoints/walletsTokens.json"
+        },
+        "/transfer": {
+            "$ref": "./endpoints/transfer.json"
+        },
+        "/wallets/{walletId}/transfer-balance": {
+            "$ref": "./endpoints/transferBalance.json"
+        },
+        "/batch/mint": {
+            "$ref": "./endpoints/batchMint.json"
+        },
+        "/batch/transfer": {
+            "$ref": "./endpoints/batchTransfer.json"
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-api-key"
+            }
+        }
+    }
+}

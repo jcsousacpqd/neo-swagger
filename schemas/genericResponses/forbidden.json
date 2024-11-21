@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "description": "Bad Request",
+    "properties": {
+        "message": {
+            "type": "string",
+            "example": "You cannot consume this service"
+        }
+    }
+}

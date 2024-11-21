@@ -1,0 +1,45 @@
+{
+    "type": "object",
+    "properties": {
+        "channel": {
+            "type": "string",
+            "example": "my-channel"
+        },
+        "idProcess": {
+            "type": "string",
+            "example": "Proc-ID-1"
+        },
+        "idProduct": {
+            "type": "string",
+            "example": "Prod-ID-1"
+        },
+        "idOperation": {
+            "type": "string",
+            "example": "Oper-ID-1"
+        },
+        "idAsset": {
+            "type": "string",
+            "example": "asset.71d07686-3b81-4ac4-b696-38e84e6a16b3"
+        },
+        "idLocal": {
+            "type": "string",
+            "example": "1"
+        },
+        "timestamp": {
+            "type": "string",
+            "example": "0000-00-00T00:00:00.000Z"
+        },
+        "tokens": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "tokenId": {
+                        "type": "string",
+                        "example": "e375a8cafbc7b342530f7671b7cc2cc9c27876c507e5374f9df8f5ea41cfc9b7"
+                    }
+                }
+            }
+        }
+    }
+}

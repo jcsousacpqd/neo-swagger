@@ -1,0 +1,71 @@
+{
+    "type": "object",
+    "properties": {
+        "credDefId": {
+            "type": "string",
+            "description": "Credential definition identifier when type is credential",
+            "example": "39951766-7431-11ee-b962-0242ac120002"
+        },
+        "credId": {
+            "type": "string",
+            "description": "Credential user verifier",
+            "example": "E6gXVXU9Nxci4LZPmN82eU:3:CL:1962:default"
+        },
+        "credentialData": {
+            "type": "object",
+            "example": {
+                "field1": {
+                    "type": "type-example",
+                    "description": "any-field-1",
+                    "example": "any-example-1"
+                },
+                "field2": {
+                    "type": "type-example",
+                    "description": "any-field-2",
+                    "example": "any-example-2"
+                }
+            }
+        },
+        "idAsset": {
+            "type": "string",
+            "description": "Asset ID from trace network",
+            "example": "asset.71d07686-3b81-4ac4-b696-38e84e6a16b3"
+        },
+        "channel": {
+            "type": "string",
+            "description": "Channel from trace network when type is process",
+            "example": "my-channel"
+        },
+        "auth": {
+            "type": "object",
+            "properties": {
+                "walletID": {
+                    "type": "string",
+                    "description": "Wallet identifier",
+                    "example": "wallet.127"
+                },
+                "accessToken": {
+                    "type": "string",
+                    "description": "Access token",
+                    "example": "token.123"
+                },
+                "apiKey": {
+                    "type": "string",
+                    "description": "Api key for authentication",
+                    "example": "kaJBx23THOMwmjIDoqMP8YV9MzK1KooHCR3VZ5Lp0V1RbfNA1LM8qTYiHyRRrst1"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "Secret key",
+                    "example": "secret"
+                }
+            }
+        }
+    },
+    "required": [
+        "credDefId",
+        "credId",
+        "credentialData",
+        "auth"
+    ]
+}

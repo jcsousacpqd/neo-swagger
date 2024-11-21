@@ -1,0 +1,27 @@
+{
+    "post": {
+        "tags": ["Batch Operations"],
+        "summary": "Transfere múltiplos tokens de uma vez",
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/batch/requests/batchTransferRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Transferência de múltiplos tokens realizada com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/batch/responses/batchTransferResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

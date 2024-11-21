@@ -1,0 +1,21 @@
+version: "3.3"
+
+networks:
+  wallet-network:
+    external: true
+
+services:
+  wallet-swagger:
+    image: swaggerapi/swagger-ui:latest
+    container_name: "wallet-swagger"
+    ports:
+      - "3700:8080"  # Porta local: 3345 -> Porta Swagger UI: 8080
+    volumes:
+      - ./swagger.json:/swagger.json
+      - ./endpoints:/endpoints        # Endpoints JSON
+      - ./schemas:/schemas            # Schemas JSON
+    environment:
+      SWAGGER_JSON: /swagger.json
+      BASE_URL: /wallet/swagger       # URL base para o Swagger
+    networks:
+      - wallet-network

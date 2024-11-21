@@ -1,0 +1,28 @@
+{
+    "get": {
+        "tags": ["Wallets"],
+        "summary": "Consulta uma carteira por id de usuário",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
+        "responses": {
+            "201": {
+                "description": "Sucesso!",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/wallets/responses/walletsResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

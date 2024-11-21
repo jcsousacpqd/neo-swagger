@@ -1,0 +1,96 @@
+{
+    "type": "object",
+    "properties": {
+        "credId": {
+            "type": "string",
+            "example": "E6gXVXU9Nxci4LZPmN82eU:3:CL:1962:default"
+        },
+        "token": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "Token issuer",
+                "example": "e375a8cafbc7b342530f7671b7cc2cc9c27876c507e5374f9df8f5ea41cfc9b7"
+            }
+        },
+        "assetHistory": {
+            "type": "object",
+            "properties": {
+                "idAsset": {
+                    "type": "string",
+                    "description": "Asset identifier",
+                    "example": "asset.71d07686-3b81-4ac4-b696-38e84e6a16b3"
+                },
+                "orgOwner": {
+                    "type": "string",
+                    "description": "Organization origin identifier",
+                    "example": "CPQD"
+                },
+                "operation": {
+                    "type": "string",
+                    "description": "Operation",
+                    "example": "CREATE"
+                },
+                "timestamp": {
+                    "type": "string",
+                    "description": "Timestamp of operation on ISO-8601 format",
+                    "example": "0000-00-00T00:00:00.000Z"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of asset",
+                    "example": "ACTIVE"
+                },
+                "channel": {
+                    "type": "string",
+                    "description": "Channel of organization",
+                    "example": "my-channel"
+                },
+                "idProcess": {
+                    "type": "string",
+                    "description": "Process identifier",
+                    "example": "Proc-ID-1"
+                },
+                "idOperation": {
+                    "type": "string",
+                    "description": "Operation identifier",
+                    "example": "Oper-ID-1"
+                },
+                "idProduct": {
+                    "type": "string",
+                    "description": "Product identifier",
+                    "example": "Prod-ID-1"
+                },
+                "listData": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "data": {
+                                "type": "object",
+                                "example": {
+                                    "country": "United states",
+                                    "stage": "Califórnia",
+                                    "city": "Los Angeles"
+                                },
+                                "description": "Array of JSON objects with asset data"
+                            },
+                            "hash": {
+                                "type": "string",
+                                "description": "Hash of data",
+                                "example": "xxxxx5268ccfbcf3219fd19ea04b0fd0eb679d669d9b5f53c91753a52a6xxxxx"
+                            },
+                            "invalidData": {
+                                "type": "boolean",
+                                "description": "Return true if data is inconsistent with ledger",
+                                "example": "false"
+                            }
+                        }
+                    },
+                    "description": "JSON object with ungroup data. Its length must be equal of amount"
+                }
+            },
+            "description": "Asset history"
+        }
+    }
+}

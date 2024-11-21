@@ -1,0 +1,28 @@
+{
+    "get": {
+        "tags": ["Wallets"],
+        "summary": "Consulta o saldo de NeoCoins da carteira",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Saldo da carteira",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/balanceNeoCoin/responses/walletsBalanceResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

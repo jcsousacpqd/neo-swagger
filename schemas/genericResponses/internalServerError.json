@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+        "errors": {
+            "type": "string",
+            "example": "Internal Server Error"
+        }
+    }
+}

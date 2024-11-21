@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "properties": {
+        "channel": {
+            "type": "string",
+            "description": "Channel from trace network when type is process",
+            "example": "my-channel"
+        },
+        "process": {
+            "type": "object",
+            "properties": {
+                "idProcess": {
+                    "type": "string",
+                    "description": "Process identifier",
+                    "example": "Proc-ID-1"
+                },
+                "idOperation": {
+                    "type": "string",
+                    "description": "Operation identifier",
+                    "example": "Oper-ID-1"
+                },
+                "idProduct": {
+                    "type": "string",
+                    "description": "Product identifier",
+                    "example": "Prod-ID-1"
+                }
+            }
+        },
+        "idAsset": {
+            "type": "string",
+            "description": "Asset ID from trace network",
+            "example": "asset.71d07686-3b81-4ac4-b696-38e84e6a16b3"
+        },
+        "idLocal": {
+            "type": "string",
+            "description": "Local identifier",
+            "example": "1"
+        },
+        "auth": {
+            "type": "object",
+            "properties": {
+                "walletID": {
+                    "type": "string",
+                    "description": "Wallet identifier",
+                    "example": "wallet.127"
+                },
+                "accessToken": {
+                    "type": "string",
+                    "description": "Access token",
+                    "example": "token.123"
+                },
+                "apiKey": {
+                    "type": "string",
+                    "description": "Api key for authentication",
+                    "example": "kaJBx23THOMwmjIDoqMP8YV9MzK1KooHCR3VZ5Lp0V1RbfNA1LM8qTYiHyRRrst1"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "Secret key",
+                    "example": "secret"
+                }
+            }
+        },
+        "timestamp": {
+            "type": "string",
+            "description": "Timestamp to find asset transaction",
+            "example": "0000-00-00T00:00:00.000Z"
+        }
+    },
+    "required": [
+        "channel",
+        "process",
+        "auth",
+        "timestamp"
+    ]
+}

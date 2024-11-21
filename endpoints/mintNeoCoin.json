@@ -1,0 +1,37 @@
+{
+    "post": {
+        "tags": ["Wallets"],
+        "summary": "Adiciona saldo de NeoCoins na carteira do usuário",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/balanceNeoCoin/requests/walletsBalanceRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "201": {
+                "description": "Saldo Adicionado com sucesso!",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/balanceNeoCoin/responses/walletsBalanceResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

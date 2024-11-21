@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "walletId": {
+            "type": "string",
+            "description": "ID da carteira"
+        },
+        "message": {
+            "type": "string",
+            "description": "Mensagem de sucesso ao criar carteira"
+        }
+    }
+}

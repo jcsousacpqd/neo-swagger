@@ -1,0 +1,28 @@
+{
+    "post": {
+        "tags": ["Wallets"],
+        "summary": "Cria uma nova carteira para um usuário",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
+        "responses": {
+            "201": {
+                "description": "Carteira criada com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/wallets/responses/walletsResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

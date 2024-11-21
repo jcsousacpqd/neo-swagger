@@ -1,0 +1,28 @@
+{
+    "get": {
+        "tags": ["Tokens"],
+        "summary": "Consulta a lista de tokens ERC-1155 pertencentes à carteira",
+        "parameters": [
+            {
+                "name": "walletId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            }
+        ],
+        "responses": {
+            "200": {
+                "description": "Lista de tokens",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/tokens/responses/walletsTokensResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
