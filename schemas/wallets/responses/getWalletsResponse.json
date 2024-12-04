@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "properties": {
+        "wallet_Address": {
+            "type": "string",
+            "example": "0x89754f0C3A8fbC6BAf0D105b8d05D3A93d8a2132",
+            "description": "ID da carteira"
+        }
+    }
+}

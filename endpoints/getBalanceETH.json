@@ -1,6 +1,6 @@
 {
     "get": {
-        "tags": ["Wallets"],
+        "tags": ["Credits"],
         "summary": "Consulta o saldo de ETH da carteira",
         "parameters": [
             {

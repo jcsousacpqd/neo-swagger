@@ -1,0 +1,24 @@
+{
+      "type": "object",
+      "properties": {
+          "errorCode": {
+              "type": "string",
+              "description": "Código de erro",
+              "example": "ERR001"
+          },
+          "message": {
+              "type": "string",
+              "description": "Descrição do erro",
+              "example": "Saldo insuficiente"
+          },
+          "details": {
+              "type": "object",
+              "description": "Detalhes adicionais sobre o erro",
+              "nullable": true,
+              "example": {
+                  "requiredBalance": "0.00001",
+                  "availableBalance": "0.000007"
+              }
+          }
+      }
+}

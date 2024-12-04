@@ -1,0 +1,45 @@
+{
+  "post": {
+      "tags": ["Tokens"],
+      "summary": "Queima (burn) uma quantidade de um ativo",
+      "parameters": [
+          {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "description": "ID do usuário proprietário do ativo",
+              "schema": {
+                  "type": "string",
+                  "example": "03"
+              }
+          }
+      ],
+      "requestBody": {
+          "content": {
+              "application/json": {
+                  "schema": {
+                      "$ref": "../schemas/burnAsset/requests/burnRequest.json"
+                  }
+              }
+          }
+      },
+      "responses": {
+          "200": {
+              "description": "Ativo queimado com sucesso",
+              "content": {
+                  "application/json": {
+                      "schema": {
+                          "$ref": "../schemas/burnAsset/responses/burnResponse.json"
+                      }
+                  }
+              }
+          },
+          "400": {
+              "$ref": "../schemas/genericResponses/internalServerError.json"
+          },
+          "500": {
+              "$ref": "../schemas/genericResponses/internalServerError.json"
+          }
+      }
+  }
+}

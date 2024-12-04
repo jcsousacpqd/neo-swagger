@@ -1,7 +1,7 @@
 {
     "post": {
-        "tags": ["Wallets"],
-        "summary": "Adiciona saldo de NeoCoins na carteira do usuário",
+        "tags": ["Credits"],
+        "summary": "Adiciona saldo da moeda da rede na carteira do usuário",
         "parameters": [
             {
                 "name": "userId",
@@ -16,7 +16,7 @@
             "content": {
                 "application/json": {
                     "schema": {
-                        "$ref": "../schemas/balanceNeoCoin/requests/walletsBalanceRequest.json"
+                        "$ref": "../schemas/balanceERC20/requests/walletsBalanceRequest.json"
                     }
                 }
             }
@@ -27,7 +27,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../schemas/balanceNeoCoin/responses/walletsBalanceResponse.json"
+                            "$ref": "../schemas/balanceERC20/responses/walletsBalanceResponse.json"
                         }
                     }
                 }

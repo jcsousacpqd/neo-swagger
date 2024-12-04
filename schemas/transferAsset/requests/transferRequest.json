@@ -1,0 +1,16 @@
+{
+        "type": "object",
+        "properties": {
+            "receiptUserId": {
+                "type": "string",
+                "description": "ID do usuário que receberá o ativo",
+                "example": "03"
+            },
+            "TokenId": {
+                "type": "integer",
+                "description": "ID do token a ser transferido",
+                "example": 2
+            }
+        },
+        "required": ["receiptUserId", "TokenId"]
+}

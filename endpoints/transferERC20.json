@@ -1,0 +1,58 @@
+{
+    "post": {
+        "tags": ["Credits"],
+        "summary": "Transfere saldo entre carteiras ERC20",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "schema": {
+                    "type": "number"
+                }
+            }
+        ],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/transferBalance/requests/transferBalanceRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Transferência de saldo realizada com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/transferBalance/responses/transferBalanceResponse.json"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "description": "Erro na solicitação",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/transferBalance/responses/errorResponse.json"
+                        }
+                    }
+                }
+            },
+            "500": {
+                "description": "Erro interno no servidor",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/transferBalance/responses/errorResponse.json"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

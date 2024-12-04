@@ -1,0 +1,45 @@
+{
+    "post": {
+        "tags": ["Tokens"],
+        "summary": "Transfere um ativo para outro usuário",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "description": "ID da usuário associada à transferência",
+              "schema": {
+                  "type": "string",
+                  "example": "03"
+              }
+            }
+        ],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/transferAsset/requests/transferRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Transferência realizada com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/transferAsset/responses/transferResponse.json"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "$ref": "../schemas/genericResponses/internalServerError.json"
+            },
+            "500": {
+                "$ref": "../schemas/genericResponses/internalServerError.json"
+            }
+        }
+    }
+}

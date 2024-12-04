@@ -1,0 +1,16 @@
+{
+      "type": "object",
+      "properties": {
+          "tokenId": {
+              "type": "integer",
+              "description": "ID do token a ser criado",
+              "example": 3
+          },
+          "data": {
+              "type": "string",
+              "description": "Dados adicionais associados ao ativo",
+              "example": "www.google.com"
+          }
+      },
+      "required": ["tokenId", "data"]
+}

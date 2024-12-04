@@ -1,6 +1,6 @@
 {
     "get": {
-        "tags": ["Wallets"],
+        "tags": ["Credits"],
         "summary": "Consulta o saldo de NeoCoins da carteira",
         "parameters": [
             {
@@ -18,7 +18,7 @@
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../schemas/balanceNeoCoin/responses/walletsBalanceResponse.json"
+                            "$ref": "../schemas/balanceERC20/responses/walletsBalanceResponse.json"
                         }
                     }
                 }

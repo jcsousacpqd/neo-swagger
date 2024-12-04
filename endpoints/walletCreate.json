@@ -14,11 +14,10 @@
         ],
         "responses": {
             "201": {
-                "description": "Carteira criada com sucesso",
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../schemas/wallets/responses/walletsResponse.json"
+                            "$ref": "../schemas/wallets/responses/createWalletResponse.json"
                         }
                     }
                 }

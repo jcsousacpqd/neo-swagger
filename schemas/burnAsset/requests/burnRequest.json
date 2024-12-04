@@ -1,0 +1,16 @@
+{
+      "type": "object",
+      "properties": {
+          "tokenId": {
+              "type": "integer",
+              "description": "ID do token a ser queimado",
+              "example": 2
+          },
+          "value": {
+              "type": "string",
+              "description": "Quantidade do ativo a ser queimada",
+              "example": "1"
+          }
+      },
+      "required": ["tokenId", "value"]
+}

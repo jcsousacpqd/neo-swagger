@@ -4,19 +4,13 @@
             "transactionId": {
                 "type": "string",
                 "description": "Identificador da transação",
-                "example": "tx_12345abc"
+                "example": "transfer_tx_67890"
             },
             "status": {
                 "type": "string",
+                "enum": ["SUCCESS", "FAILED"],
                 "description": "Status da transferência",
-                "enum": ["SUCCESS", "PENDING", "FAILED"],
                 "example": "SUCCESS"
-            },
-            "timestamp": {
-                "type": "string",
-                "format": "date-time",
-                "description": "Data e hora da transação",
-                "example": "2024-12-04T12:34:56Z"
             }
         }
 }

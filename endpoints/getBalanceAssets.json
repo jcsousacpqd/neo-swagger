@@ -1,0 +1,46 @@
+{
+  "get": {
+      "tags": ["Tokens"],
+      "summary": "Consulta o saldo de um ativo específico de um usuário",
+      "parameters": [
+          {
+              "name": "userId",
+              "in": "path",
+              "required": true,
+              "description": "ID do usuário",
+              "schema": {
+                  "type": "string",
+                  "example": "03"
+              }
+          },
+          {
+              "name": "tokenId",
+              "in": "path",
+              "required": true,
+              "description": "ID do ativo",
+              "schema": {
+                  "type": "integer",
+                  "example": 2
+              }
+          }
+      ],
+      "responses": {
+          "200": {
+              "description": "Ativo recuperado com sucesso!",
+              "content": {
+                  "application/json": {
+                      "schema": {
+                          "$ref": "../schemas/balanceAssets/responses/assetsBalanceResponse.json"
+                      }
+                  }
+              }
+          },
+          "400": {
+              "$ref": "../schemas/genericResponses/internalServerError.json"
+          },
+          "500": {
+              "$ref": "../schemas/genericResponses/internalServerError.json"
+          }
+      }
+  }
+}

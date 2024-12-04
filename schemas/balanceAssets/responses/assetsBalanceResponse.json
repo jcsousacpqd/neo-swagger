@@ -1,0 +1,10 @@
+{
+        "type": "object",
+        "properties": {
+            "balance": {
+                "type": "string",
+                "description": "Saldo disponível do ativo",
+                "example": "1"
+            }
+        }
+}

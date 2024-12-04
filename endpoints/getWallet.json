@@ -13,12 +13,11 @@
             }
         ],
         "responses": {
-            "201": {
-                "description": "Sucesso!",
+            "200": {
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../schemas/wallets/responses/walletsResponse.json"
+                            "$ref": "../schemas/wallets/responses/getWalletsResponse.json"
                         }
                     }
                 }

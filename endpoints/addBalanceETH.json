@@ -1,6 +1,6 @@
 {
     "post": {
-        "tags": ["Wallets"],
+        "tags": ["Credits"],
         "summary": "Adiciona saldo de ETH na carteira do usuário",
         "parameters": [
             {

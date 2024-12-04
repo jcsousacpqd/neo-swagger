@@ -1,0 +1,45 @@
+{
+    "post": {
+        "tags": ["Tokens"],
+        "summary": "Cria um novo ativo (mint) para o usuário",
+        "parameters": [
+            {
+                "name": "userId",
+                "in": "path",
+                "required": true,
+                "description": "ID do usuário que receberá o ativo",
+                "schema": {
+                    "type": "string",
+                    "example": "03"
+                }
+            }
+        ],
+        "requestBody": {
+            "content": {
+                "application/json": {
+                    "schema": {
+                        "$ref": "../schemas/mintAsset/requests/mintRequest.json"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "200": {
+                "description": "Ativo criado com sucesso",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "../schemas/mintAsset/responses/mintResponse.json"
+                        }
+                    }
+                }
+            },
+            "400": {
+                "$ref": "../schemas/genericResponses/internalServerError.json"
+            },
+            "500": {
+                "$ref": "../schemas/genericResponses/internalServerError.json"
+            }
+        }
+    }
+}
