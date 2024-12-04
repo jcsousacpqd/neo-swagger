@@ -1,68 +1,78 @@
 {
     "openapi": "3.0.1",
     "info": {
-        "title": "Wallet and Token Management API",
-        "description": "Endpoints for wallet creation, balance check, token management, and transfers.",
-        "version": "1.0.0"
+      "title": "Neo Blockchain Middleware Wallet and Token Management API",
+      "description": "Endpoints for wallet creation, balance check, token management, and transfers.",
+      "version": "1.0.0"
     },
     "servers": [
-        {
-            "url": "http://",
-            "description": "Main server"
-        },
-        {
-            "url": "https://",
-            "description": "Main server"
-        }
+      {
+        "url": "http://127.0.0.1:3333",
+        "description": "Main server"
+      },
+      {
+        "url": "https://127.0.0.1:3333",
+        "description": "Main server"
+      }
     ],
     "tags": [
-        {
-            "name": "Wallets",
-            "description": "Operations related to wallets"
-        },
-        {
-            "name": "Tokens",
-            "description": "Operations related to ERC-1155 tokens"
-        },
-        {
-            "name": "Transfers",
-            "description": "Token and balance transfer operations"
-        },
-        {
-            "name": "Batch Operations",
-            "description": "Batch minting and transfer of tokens"
-        }
+      {
+        "name": "Wallets",
+        "description": "Operations related to wallets"
+      },
+      {
+        "name": "Tokens",
+        "description": "Operations related to ERC-1155 tokens"
+      },
+      {
+        "name": "Credits",
+        "description": "Token and balance transfer operations"
+      }
     ],
     "paths": {
-        "/wallets": {
-            "$ref": "./endpoints/walletCreate.json"
-        },
-        "/wallets/{walletId}/balance": {
-            "$ref": "./endpoints/walletsBalance.json"
-        },
-        "/wallets/{walletId}/tokens": {
-            "$ref": "./endpoints/walletsTokens.json"
-        },
-        "/transfer": {
-            "$ref": "./endpoints/transfer.json"
-        },
-        "/wallets/{walletId}/transfer-balance": {
-            "$ref": "./endpoints/transferBalance.json"
-        },
-        "/batch/mint": {
-            "$ref": "./endpoints/batchMint.json"
-        },
-        "/batch/transfer": {
-            "$ref": "./endpoints/batchTransfer.json"
-        }
+      "/wallets/CreateWallet/{userId}": {
+        "$ref": "./endpoints/walletCreate.json"
+      },
+      "/wallets/GetWallet/{userId}": {
+        "$ref": "./endpoints/getWallet.json"
+      },
+      "/credits/GetBalanceETH/{userId}": {
+        "$ref": "./endpoints/getBalanceETH.json"
+      },
+      "/credits/AddBalanceETH/{userId}": {
+        "$ref": "./endpoints/addBalanceETH.json"
+      },
+      "/credits/mintERC20/{userId}": {
+        "$ref": "./endpoints/mintERC20.json"
+      }, 
+      "/tokens/mintAssets/{userId}": {
+        "$ref": "./endpoints/mintAssets.json"
+      }, 
+      "/credits/transferERC20/{userId}": {
+        "$ref": "./endpoints/transferERC20.json"
+      }, 
+      "/tokens/transferAssets/{userId}": {
+        "$ref": "./endpoints/transferAssets.json"
+      },
+      "/credits/getBalanceERC20/{userId}": {
+        "$ref": "./endpoints/getBalanceERC20.json"
+      },
+      "/tokens/GetBalanceAssets/{userId}/{tokenId}": {
+        "$ref": "./endpoints/getBalanceAssets.json"
+      },
+      "/tokens/burnAsset/{userId}": {
+        "$ref": "./endpoints/burnAsset.json"
+      }
+      
     },
     "components": {
-        "securitySchemes": {
-            "apiKeyAuth": {
-                "type": "apiKey",
-                "in": "header",
-                "name": "x-api-key"
-            }
+      "securitySchemes": {
+        "apiKeyAuth": {
+          "type": "apiKey",
+          "in": "header",
+          "name": "x-api-key"
         }
+      }
     }
-}
+  }
+  
