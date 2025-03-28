@@ -1,0 +1,64 @@
+{
+  "get": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Obtém o recibo de uma transação",
+    "parameters": [
+      {
+        "name": "nonce",
+        "in": "path",
+        "required": true,
+        "description": "ID da transação para obter o recibo",
+        "schema": {
+          "type": "string",
+          "example": "5"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Recibo obtido com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "receiptId": {
+                  "type": "string",
+                  "description": "Identificador do recibo",
+                  "example": "receipt_98765"
+                },
+                "transactionId": {
+                  "type": "string",
+                  "description": "ID da transação associada",
+                  "example": "tx_12345"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da transação",
+                  "example": "SUCCESS"
+                },
+                "details": {
+                  "type": "string",
+                  "description": "Detalhes adicionais sobre a transação",
+                  "example": "Compra de 200 tokens."
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

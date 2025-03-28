@@ -1,0 +1,106 @@
+{
+  "get": {
+    "tags": [
+      "Trades"
+    ],
+    "summary": "Obter informações detalhadas de uma oferta de IREC",
+    "parameters": [
+      {
+        "name": "offerId",
+        "in": "path",
+        "required": true,
+        "description": "ID da oferta a ser consultada",
+        "schema": {
+          "type": "string",
+          "example": "example-offer-id-9"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Informações da oferta retornadas com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offerId": {
+                  "type": "string",
+                  "description": "Identificador da oferta",
+                  "example": "example-offer-id-9"
+                },
+                "sellerId": {
+                  "type": "string",
+                  "description": "ID do usuário vendedor",
+                  "example": "01"
+                },
+                "tokensIds": {
+                  "type": "array",
+                  "description": "Lista de IDs dos tokens IREC na oferta",
+                  "items": {
+                    "type": "integer"
+                  },
+                  "example": [
+                    8,
+                    10
+                  ]
+                },
+                "tokenQuantities": {
+                  "type": "array",
+                  "description": "Lista de quantidades correspondentes aos tokens",
+                  "items": {
+                    "type": "number"
+                  },
+                  "example": [
+                    20,
+                    20
+                  ]
+                },
+                "amount": {
+                  "type": "number",
+                  "description": "Valor da oferta em NeoCoins",
+                  "example": 10
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Status atual da oferta",
+                  "enum": [
+                    "OPEN",
+                    "CLOSED",
+                    "CANCELLED"
+                  ],
+                  "example": "OPEN"
+                },
+                "createdAt": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Data de criação da oferta",
+                  "example": "2025-03-27T14:00:00Z"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Oferta não encontrada",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Oferta de IREC não encontrada"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

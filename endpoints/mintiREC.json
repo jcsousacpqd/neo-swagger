@@ -1,0 +1,110 @@
+{
+  "post": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Realiza a mintagem de um IREC",
+    "parameters": [],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tokenId": {
+                "type": "string",
+                "description": "ID do token a ser mintado",
+                "example": "f7e3fb97-f42c-4d64-b61d-6d427482bd55"
+              },
+              "nonce": {
+                "type": "integer",
+                "description": "Nonce associado ao token",
+                "example": 3
+              },
+              "supplyCompany": {
+                "type": "string",
+                "description": "Empresa fornecedora do IREC",
+                "example": "CPQD"
+              },
+              "originPlace": {
+                "type": "string",
+                "description": "Local de origem do IREC",
+                "example": "Campinas"
+              },
+              "certificateIdFrom": {
+                "type": "string",
+                "description": "Identificação do certificado inicial",
+                "example": "from"
+              },
+              "certificateIdUntil": {
+                "type": "string",
+                "description": "Identificação do certificado final",
+                "example": "until"
+              },
+              "productionPeriod": {
+                "type": "string",
+                "description": "Período de produção de energia",
+                "example": "example period"
+              },
+              "energySource": {
+                "type": "string",
+                "description": "Fonte de energia",
+                "example": "HYDRO"
+              },
+              "link": {
+                "type": "string",
+                "description": "Link com mais informações sobre o IREC",
+                "example": "https://test.com"
+              }
+            },
+            "required": [
+              "tokenId",
+              "nonce",
+              "supplyCompany",
+              "originPlace",
+              "certificateIdFrom",
+              "certificateIdUntil",
+              "productionPeriod",
+              "energySource",
+              "link"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "IREC mintado com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactionId": {
+                  "type": "string",
+                  "description": "Identificador da transação",
+                  "example": "mint_tx_54321"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da mintagem do IREC",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

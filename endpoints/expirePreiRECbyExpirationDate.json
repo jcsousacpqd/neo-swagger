@@ -1,0 +1,87 @@
+{
+  "get": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Obter ofertas de pré-IRECs expiradas por data",
+    "parameters": [
+      {
+        "name": "expirationDate",
+        "in": "path",
+        "required": true,
+        "description": "Data de expiração no formato MM-DD",
+        "schema": {
+          "type": "string",
+          "example": "01-26",
+          "pattern": "^\\d{2}-\\d{2}$"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Lista de pré-IRECs expirados retornada com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tokenId": {
+                    "type": "string",
+                    "description": "ID do token do pré-IREC",
+                    "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+                  },
+                  "supplyCompany": {
+                    "type": "string",
+                    "description": "Empresa fornecedora do IREC",
+                    "example": "CPQD"
+                  },
+                  "originPlace": {
+                    "type": "string",
+                    "description": "Local de origem do IREC",
+                    "example": "Campinas"
+                  },
+                  "energySource": {
+                    "type": "string",
+                    "description": "Fonte de energia",
+                    "example": "HYDRO"
+                  },
+                  "expirationDate": {
+                    "type": "string",
+                    "description": "Data de expiração da oferta",
+                    "example": "01-26"
+                  },
+                  "status": {
+                    "type": "string",
+                    "description": "Status atual da oferta",
+                    "example": "EXPIRED"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Nenhuma oferta expirada encontrada para a data informada",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Nenhuma oferta expirada encontrada para a data 01-26"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

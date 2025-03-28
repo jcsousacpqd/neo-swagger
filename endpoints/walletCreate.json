@@ -1,26 +1,66 @@
 {
     "post": {
-        "tags": ["Wallets"],
-        "summary": "Cria uma nova carteira para um usuário",
+        "tags": [
+            "Wallets"
+        ],
+        "summary": "Criar uma carteira para o usuário",
         "parameters": [
             {
                 "name": "userId",
                 "in": "path",
                 "required": true,
+                "description": "ID do usuário para o qual a carteira será criada",
                 "schema": {
-                    "type": "number"
+                    "type": "string",
+                    "example": "02"
                 }
             }
         ],
         "responses": {
             "201": {
+                "description": "Carteira criada com sucesso",
                 "content": {
                     "application/json": {
                         "schema": {
-                            "$ref": "../schemas/wallets/responses/createWalletResponse.json"
+                            "type": "object",
+                            "properties": {
+                                "walletAddress": {
+                                    "type": "string",
+                                    "description": "Endereço da carteira criada",
+                                    "example": "0x1234567890abcdef1234567890abcdef12345678"
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "enum": [
+                                        "SUCCESS",
+                                        "FAILED"
+                                    ],
+                                    "description": "Status da criação da carteira",
+                                    "example": "SUCCESS"
+                                }
+                            }
                         }
                     }
                 }
+            },
+            "400": {
+                "description": "Requisição inválida (ex: carteira já existente para o usuário)",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Carteira já existe para este usuário"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "500": {
+                "$ref": "../schemas/genericResponses/internalServerError.json"
             }
         }
     }

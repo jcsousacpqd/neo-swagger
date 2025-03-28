@@ -1,0 +1,36 @@
+{
+  "get": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Obter quantidade total ofertada de pré-IRECs",
+    "parameters": [],
+    "responses": {
+      "200": {
+        "description": "Quantidade total de pré-IRECs retornada com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "totalVolume": {
+                  "type": "number",
+                  "description": "Quantidade total ofertada",
+                  "example": 1500
+                },
+                "unit": {
+                  "type": "string",
+                  "description": "Unidade de medida do volume",
+                  "example": "MWh"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

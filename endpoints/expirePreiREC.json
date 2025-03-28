@@ -1,0 +1,76 @@
+{
+  "post": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Expirar ofertas de pré-IREC com base em uma data",
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "expireDate": {
+                "type": "string",
+                "description": "Data de expiração no formato MM-DD",
+                "example": "01-26",
+                "pattern": "^\\d{2}-\\d{2}$"
+              }
+            },
+            "required": [
+              "expireDate"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Ofertas expiradas com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "expiredCount": {
+                  "type": "integer",
+                  "description": "Número de pré-IRECs expirados",
+                  "example": 5
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Resultado da operação",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Requisição inválida (data mal formatada ou ausente)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Formato da data inválido. Use MM-DD."
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

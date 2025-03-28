@@ -1,0 +1,109 @@
+{
+  "get": {
+    "tags": [
+      "IRECs"
+    ],
+    "summary": "Obter informações detalhadas de um IREC",
+    "parameters": [
+      {
+        "name": "tokenId",
+        "in": "path",
+        "required": true,
+        "description": "ID do token IREC",
+        "schema": {
+          "type": "string",
+          "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Informações do IREC retornadas com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tokenId": {
+                  "type": "string",
+                  "description": "ID do token do IREC",
+                  "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+                },
+                "nonce": {
+                  "type": "integer",
+                  "description": "Nonce associado ao token",
+                  "example": 3
+                },
+                "supplyCompany": {
+                  "type": "string",
+                  "description": "Empresa fornecedora do IREC",
+                  "example": "CPQD"
+                },
+                "originPlace": {
+                  "type": "string",
+                  "description": "Local de origem",
+                  "example": "Campinas"
+                },
+                "certificateIdFrom": {
+                  "type": "string",
+                  "description": "Identificação do certificado inicial",
+                  "example": "from"
+                },
+                "certificateIdUntil": {
+                  "type": "string",
+                  "description": "Identificação do certificado final",
+                  "example": "until"
+                },
+                "productionPeriod": {
+                  "type": "string",
+                  "description": "Período de produção de energia",
+                  "example": "Jan 2023 - Dec 2023"
+                },
+                "energySource": {
+                  "type": "string",
+                  "description": "Fonte de energia",
+                  "example": "HYDRO"
+                },
+                "link": {
+                  "type": "string",
+                  "description": "Link com mais informações",
+                  "example": "https://test.com"
+                },
+                "mintDate": {
+                  "type": "string",
+                  "format": "date-time",
+                  "description": "Data de mintagem do IREC",
+                  "example": "2024-01-30T15:34:22Z"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Status do IREC",
+                  "example": "VALID"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "IREC não encontrado para o tokenId informado",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "IREC não encontrado"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

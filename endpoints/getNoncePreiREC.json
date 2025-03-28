@@ -1,0 +1,59 @@
+{
+  "get": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Obtém o índice do nonce para um ativo específico",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do ativo para obter o índice do nonce",
+        "schema": {
+          "type": "string",
+          "example": "40"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Índice do nonce obtido com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nonceIndex": {
+                  "type": "integer",
+                  "description": "Índice do nonce associado ao ativo",
+                  "example": 12345
+                },
+                "assetId": {
+                  "type": "integer",
+                  "description": "ID do ativo",
+                  "example": 40
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da solicitação",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

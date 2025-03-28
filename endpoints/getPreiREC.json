@@ -1,0 +1,98 @@
+{
+  "get": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Obter informações de uma oferta (Pré-IREC)",
+    "parameters": [
+      {
+        "name": "tokenId",
+        "in": "path",
+        "required": true,
+        "description": "ID do token da oferta (Pré-IREC)",
+        "schema": {
+          "type": "string",
+          "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Dados do pré-IREC retornados com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "tokenId": {
+                  "type": "string",
+                  "description": "ID do token",
+                  "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+                },
+                "supplyCompany": {
+                  "type": "string",
+                  "description": "Empresa fornecedora do IREC",
+                  "example": "CPQD"
+                },
+                "originPlace": {
+                  "type": "string",
+                  "description": "Local de origem do IREC",
+                  "example": "Campinas"
+                },
+                "certificateIdFrom": {
+                  "type": "string",
+                  "description": "Identificação do certificado inicial",
+                  "example": "from"
+                },
+                "certificateIdUntil": {
+                  "type": "string",
+                  "description": "Identificação do certificado final",
+                  "example": "until"
+                },
+                "productionPeriod": {
+                  "type": "string",
+                  "description": "Período de produção de energia",
+                  "example": "example period"
+                },
+                "energySource": {
+                  "type": "string",
+                  "description": "Fonte de energia",
+                  "example": "HYDRO"
+                },
+                "link": {
+                  "type": "string",
+                  "description": "Link com mais informações sobre o IREC",
+                  "example": "https://test.com"
+                },
+                "status": {
+                  "type": "string",
+                  "description": "Status da oferta",
+                  "example": "PENDING"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Pré-IREC não encontrado",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Pré-IREC não encontrado para o tokenId informado"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

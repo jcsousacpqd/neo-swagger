@@ -1,0 +1,133 @@
+{
+  "post": {
+    "tags": [
+      "Trades"
+    ],
+    "summary": "Criar uma oferta de IREC por um usuário vendedor",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário vendedor",
+        "schema": {
+          "type": "string",
+          "example": "01"
+        }
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "offerId": {
+                "type": "string",
+                "description": "Identificador único da oferta",
+                "example": "example-offer-id-9"
+              },
+              "tokensIds": {
+                "type": "array",
+                "description": "Lista de IDs dos tokens IREC incluídos na oferta",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  8,
+                  10
+                ]
+              },
+              "tokenQuantities": {
+                "type": "array",
+                "description": "Lista de quantidades correspondentes aos tokens oferecidos",
+                "items": {
+                  "type": "number"
+                },
+                "example": [
+                  20,
+                  20
+                ]
+              },
+              "amount": {
+                "type": "number",
+                "description": "Valor total da oferta em NeoCoins",
+                "example": 10
+              }
+            },
+            "required": [
+              "offerId",
+              "tokensIds",
+              "tokenQuantities",
+              "amount"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Oferta de IREC criada com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "offerId": {
+                  "type": "string",
+                  "description": "ID da oferta criada",
+                  "example": "example-offer-id-9"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da criação da oferta",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Requisição inválida (dados inconsistentes ou faltantes)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Quantidades dos tokens não correspondem à lista de IDs"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Usuário não encontrado ou tokens inexistentes",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Token IREC ou usuário não encontrado"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

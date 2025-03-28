@@ -16,6 +16,6 @@ services:
       - ./schemas:/schemas            # Schemas JSON
     environment:
       SWAGGER_JSON: /swagger.json
-      BASE_URL: /wallet/swagger       # URL base para o Swagger
+      BASE_URL: /swagger       # URL base para o Swagger
     networks:
       - wallet-network

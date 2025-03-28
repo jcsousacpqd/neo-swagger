@@ -1,0 +1,85 @@
+{
+  "post": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Compra um pré-IREC (Pre IREC)",
+    "parameters": [
+      {
+        "name": "tokenId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário que quer contratar o ativo",
+        "schema": {
+          "type": "string",
+          "example": "31"
+        }
+      }
+    ],
+    "requestBody": {
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "tokenId": {
+                "type": "string",
+                "description": "ID do token a ser comprado",
+                "example": "30a91697-460d-4783-a1e3-d72cf83c0bd1"
+              },
+              "amount": {
+                "type": "integer",
+                "description": "Quantidade do ativo a ser comprada",
+                "example": 200
+              },
+              "price": {
+                "type": "string",
+                "description": "Preço do ativo",
+                "example": "1"
+              }
+            },
+            "required": [
+              "tokenId",
+              "amount",
+              "price"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "Pré-IREC comprado com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactionId": {
+                  "type": "string",
+                  "description": "Identificador da transação",
+                  "example": "buy_tx_24680"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da compra do pré-IREC",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

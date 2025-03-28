@@ -1,0 +1,74 @@
+{
+  "post": {
+    "tags": [
+      "Tokens"
+    ],
+    "summary": "Queima de NeoCoin para um usuário",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário que terá NeoCoins queimadas",
+        "schema": {
+          "type": "string",
+          "example": "01"
+        }
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number",
+                "description": "Quantidade de NeoCoins a serem queimadas",
+                "example": 1
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "NeoCoin queimado com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactionId": {
+                  "type": "string",
+                  "description": "Identificador da transação de queima",
+                  "example": "burn_tx_12345"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da operação de queima",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

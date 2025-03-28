@@ -1,0 +1,93 @@
+{
+  "post": {
+    "tags": [
+      "Trades"
+    ],
+    "summary": "Comprar uma oferta de IREC",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário comprador",
+        "schema": {
+          "type": "string",
+          "example": "02"
+        }
+      },
+      {
+        "name": "offerId",
+        "in": "path",
+        "required": true,
+        "description": "ID da oferta de IREC a ser comprada",
+        "schema": {
+          "type": "string",
+          "example": "example-offer-id-9"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Oferta de IREC comprada com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactionId": {
+                  "type": "string",
+                  "description": "ID da transação de compra",
+                  "example": "tx_irec_purchase_12345"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da compra",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Requisição inválida (ex: oferta já comprada ou saldo insuficiente)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Saldo insuficiente para realizar a compra"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Oferta ou usuário não encontrado",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Oferta de IREC não encontrada"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

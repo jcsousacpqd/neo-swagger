@@ -1,0 +1,113 @@
+{
+  "post": {
+    "tags": [
+      "IRECs"
+    ],
+    "summary": "Queimar um IREC da carteira de um usuário",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário",
+        "schema": {
+          "type": "string",
+          "example": "01"
+        }
+      },
+      {
+        "name": "tokenId",
+        "in": "path",
+        "required": true,
+        "description": "ID do token IREC a ser queimado",
+        "schema": {
+          "type": "string",
+          "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+        }
+      }
+    ],
+    "requestBody": {
+      "required": true,
+      "content": {
+        "application/json": {
+          "schema": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number",
+                "description": "Quantidade do IREC a ser queimada",
+                "example": 30
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      }
+    },
+    "responses": {
+      "200": {
+        "description": "IREC queimado com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "transactionId": {
+                  "type": "string",
+                  "description": "Identificador da transação de queima",
+                  "example": "burn_tx_irec_67890"
+                },
+                "status": {
+                  "type": "string",
+                  "enum": [
+                    "SUCCESS",
+                    "FAILED"
+                  ],
+                  "description": "Status da operação",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      },
+      "400": {
+        "description": "Requisição inválida (ex: quantidade maior do que disponível)",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Quantidade a ser queimada excede o saldo do IREC"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Token IREC ou usuário não encontrado",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "IREC não encontrado para o tokenId informado"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

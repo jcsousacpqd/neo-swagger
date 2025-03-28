@@ -1,0 +1,68 @@
+{
+  "get": {
+    "tags": [
+      "Assets"
+    ],
+    "summary": "Obter quantidade total ofertada de pré-IRECs por fonte de energia",
+    "parameters": [
+      {
+        "name": "energySource",
+        "in": "path",
+        "required": true,
+        "description": "Fonte de energia a ser consultada",
+        "schema": {
+          "type": "string",
+          "example": "solar"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Quantidade total por fonte de energia retornada com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "energySource": {
+                  "type": "string",
+                  "description": "Fonte de energia consultada",
+                  "example": "solar"
+                },
+                "totalVolume": {
+                  "type": "number",
+                  "description": "Quantidade total ofertada da fonte especificada",
+                  "example": 800
+                },
+                "unit": {
+                  "type": "string",
+                  "description": "Unidade de medida do volume",
+                  "example": "MWh"
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Fonte de energia não encontrada ou sem registros",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Nenhum volume encontrado para a fonte especificada"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

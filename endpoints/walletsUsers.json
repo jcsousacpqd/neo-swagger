@@ -1,0 +1,80 @@
+{
+  "get": {
+    "tags": [
+      "Wallets"
+    ],
+    "summary": "Consultar carteira do usuário",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Dados da carteira retornados com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "walletAddress": {
+                  "type": "string",
+                  "example": "0x123z..."
+                },
+                "balance": {
+                  "type": "number",
+                  "example": 100
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "post": {
+    "tags": [
+      "Wallets"
+    ],
+    "summary": "Criar uma carteira para o usuário",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário",
+        "schema": {
+          "type": "string",
+          "example": "02"
+        }
+      }
+    ],
+    "responses": {
+      "201": {
+        "description": "Carteira criada com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "walletAddress": {
+                  "type": "string",
+                  "example": "0x123z..."
+                },
+                "status": {
+                  "type": "string",
+                  "example": "SUCCESS"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
