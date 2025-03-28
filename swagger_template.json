@@ -1,78 +1,135 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-      "title": "Neo Blockchain Middleware Wallet and Token Management API",
-      "description": "Endpoints for wallet creation, balance check, token management, and transfers.",
-      "version": "1.0.0"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Neo Blockchain Middleware Wallet and Token Management API",
+    "description": "Endpoints for wallet creation, balance check, token management, and transfers.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:3333",
+      "description": "Main server"
     },
-    "servers": [
-      {
-        "url": "http://127.0.0.1:3333",
-        "description": "Main server"
-      },
-      {
-        "url": "https://127.0.0.1:3333",
-        "description": "Main server"
-      }
-    ],
-    "tags": [
-      {
-        "name": "Wallets",
-        "description": "Operations related to wallets"
-      },
-      {
-        "name": "Tokens",
-        "description": "Operations related to ERC-1155 tokens"
-      },
-      {
-        "name": "Credits",
-        "description": "Token and balance transfer operations"
-      }
-    ],
-    "paths": {
-      "/wallets/CreateWallet/{userId}": {
-        "$ref": "./endpoints/walletCreate.json"
-      },
-      "/wallets/GetWallet/{userId}": {
-        "$ref": "./endpoints/getWallet.json"
-      },
-      "/credits/GetBalanceETH/{userId}": {
-        "$ref": "./endpoints/getBalanceETH.json"
-      },
-      "/credits/AddBalanceETH/{userId}": {
-        "$ref": "./endpoints/addBalanceETH.json"
-      },
-      "/credits/mintERC20/{userId}": {
-        "$ref": "./endpoints/mintERC20.json"
-      }, 
-      "/tokens/mintAssets/{userId}": {
-        "$ref": "./endpoints/mintAssets.json"
-      }, 
-      "/credits/transferERC20/{userId}": {
-        "$ref": "./endpoints/transferERC20.json"
-      }, 
-      "/tokens/transferAssets/{userId}": {
-        "$ref": "./endpoints/transferAssets.json"
-      },
-      "/credits/getBalanceERC20/{userId}": {
-        "$ref": "./endpoints/getBalanceERC20.json"
-      },
-      "/tokens/GetBalanceAssets/{userId}/{tokenId}": {
-        "$ref": "./endpoints/getBalanceAssets.json"
-      },
-      "/tokens/burnAsset/{userId}": {
-        "$ref": "./endpoints/burnAsset.json"
-      }
-      
+    {
+      "url": "https://127.0.0.1:3333",
+      "description": "Main server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Wallets",
+      "description": "Operations related to wallets"
     },
-    "components": {
-      "securitySchemes": {
-        "apiKeyAuth": {
-          "type": "apiKey",
-          "in": "header",
-          "name": "x-api-key"
-        }
+    {
+      "name": "Pre-iRECs",
+      "description": "Operations related to tokens Pre-iRECs"
+    },
+    {
+      "name": "iRECs",
+      "description": "Operations related to tokens iRECs"
+    },
+    {
+      "name": "Credits",
+      "description": "Token and balance transfer operations"
+    },
+    {
+      "name": "Trades",
+      "description": "Operations related to trade tokens iRECs"
+    }
+  ],
+  "paths": {
+    "/users/{userId}/wallets/balance": {
+      "$ref": "./endpoints/getBalanceETH.json"
+    },
+    "/users/{userId}/wallets": {
+      "$ref": "./endpoints/walletsUsers.json"
+    },
+    "/users/{userId}/wallets/deposit": {
+      "$ref": "./endpoints/addBalanceETH.json"
+    },
+    "/users/{userId}/wallets/tokens/neocoins/mint": {
+      "$ref": "./endpoints/mintERC20.json"
+    },
+    "/users/{userId}/wallets/tokens/neocoins/transfer": {
+      "$ref": "./endpoints/transferERC20.json"
+    },
+    "/users/{userId}/wallets/tokens/irecs/transfer": {
+      "$ref": "./endpoints/transferiREC.json"
+    },
+    "/users/{userId}/wallets/tokens/neocoins/balance": {
+      "$ref": "./endpoints/getBalanceERC20.json"
+    },
+    "/users/{userId}/wallets/tokens/neocoins/burn": {
+      "$ref": "./endpoints/burnERC20.json"
+    },
+    "/users/{userId}/wallets/tokens/irecs/{tokenId}/burn": {
+      "$ref": "./endpoints/burniREC.json"
+    },
+    "/pre-irecs": {
+      "$ref": "./endpoints/createPreiREC.json"
+    },
+    "/pre-irecs/expire": {
+      "$ref": "./endpoints/expirePreiREC.json"
+    },
+    "/pre-irecs/expired/{expirationDate}": {
+      "$ref": "./endpoints/expirePreiRECbyExpirationDate.json"
+    },
+    "/users/{userId}/pre-irecs/{tokenId}": {
+      "$ref": "./endpoints/buyPreiREC.json"
+    },
+    "/pre-irecs/receipts/{nonce}": {
+      "$ref": "./endpoints/getReceipt.json"
+    },
+    "/users/{userId}/pre-irecs/nonces": {
+      "$ref": "./endpoints/getNoncePreiREC.json"
+    },
+    "/tokens/irecs/offers/{offerId}": {
+      "$ref": "./endpoints/getOfferiREC.json"
+    },
+    "/pre-irec/{tokenId}": {
+      "$ref": "./endpoints/getPreiREC.json"
+    },
+    "/pre-irecs/total-volume": {
+      "$ref": "./endpoints/getTotalVolume.json"
+    },
+    "/pre-irecs/energy-sources/solar/total-volume": {
+      "$ref": "./endpoints/getTotalVolumebySource.json"
+    },
+    "/irecs/{tokenId}": {
+      "$ref": "./endpoints/getiREC.json"
+    },
+    "/irecs/mint": {
+      "$ref": "./endpoints/mintiREC.json"
+    },
+    "/users/{userId}/wallets/tokens/irecs/offers": {
+      "$ref": "./endpoints/createOfferiREC.json"
+    },
+    "/users/{userId}/wallets/tokens/irecs/offers/{offer-Id}/buy": {
+      "$ref": "./endpoints/buyiREC.json"
+    },
+    "/trades/get-offer-info/{offerId}": {
+      "$ref": "./endpoints/getOfferiREC.json"
+    },
+    "/users/{userId}/wallets/tokens/irecs/burn": {
+      "$ref": "./endpoints/getiRECBurnInfo.json"
+    },
+    "/users/{userId}/wallets/tokens/irecs/balances": {
+      "$ref": "./endpoints/getiRECBalances.json"
+    },
+    "/batch/mint": {
+      "$ref": "./endpoints/batchMint.json"
+    },
+    "/batch/transfer": {
+      "$ref": "./endpoints/batchTransfer.json"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "x-api-key"
       }
     }
   }
-  
+}
