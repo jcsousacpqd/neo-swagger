@@ -1,7 +1,7 @@
 {
   "get": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Obtém o recibo de uma transação",
     "parameters": [

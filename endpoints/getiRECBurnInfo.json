@@ -1,0 +1,77 @@
+{
+  "get": {
+    "tags": [
+      "iRECs"
+    ],
+    "summary": "Obter informações de IRECs queimados por um usuário",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário que queimou os IRECs",
+        "schema": {
+          "type": "string",
+          "example": "01"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Informações de IRECs queimados retornadas com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tokenId": {
+                    "type": "string",
+                    "description": "ID do token IREC queimado",
+                    "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "Quantidade de IRECs queimados",
+                    "example": 10
+                  },
+                  "burnDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Data em que a queima ocorreu",
+                    "example": "2025-03-27T14:32:00Z"
+                  },
+                  "receiver": {
+                    "type": "string",
+                    "description": "Destino da queima (ex: auditoria, neutralização etc)",
+                    "example": "Carbon Offset"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Nenhum dado de queima encontrado para o usuário",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Nenhuma queima registrada para o usuário informado"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

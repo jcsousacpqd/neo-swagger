@@ -1,7 +1,7 @@
 {
   "get": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Obter quantidade total ofertada de pré-IRECs",
     "parameters": [],

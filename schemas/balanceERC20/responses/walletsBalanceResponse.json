@@ -2,7 +2,7 @@
     "type": "object",
     "properties": {
         "balance": {
-            "type": "string",
+            "type": "number",
             "description": "Saldo da carteira"
         }
     }

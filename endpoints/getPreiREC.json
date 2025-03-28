@@ -1,7 +1,7 @@
 {
   "get": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Obter informações de uma oferta (Pré-IREC)",
     "parameters": [

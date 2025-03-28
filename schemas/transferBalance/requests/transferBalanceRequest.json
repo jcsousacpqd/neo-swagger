@@ -1,16 +1,19 @@
 {
-        "type": "object",
-        "properties": {
-            "receiptUserId": {
-                "type": "string",
-                "description": "ID do usuário que receberá o saldo",
-                "example": "03"
-            },
-            "value": {
-                "type": "string",
-                "description": "Valor a ser transferido",
-                "example": "0.000007"
-            }
+    "type": "object",
+    "properties": {
+        "receiverId": {
+            "type": "string",
+            "description": "ID do usuário que receberá o saldo",
+            "example": "03"
         },
-        "required": ["receiptUserId", "value"]
+        "value": {
+            "type": "number",
+            "description": "Valor a ser transferido",
+            "example": 0.000007
+        }
+    },
+    "required": [
+        "receiverId",
+        "value"
+    ]
 }

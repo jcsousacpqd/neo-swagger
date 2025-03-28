@@ -1,7 +1,7 @@
 {
   "get": {
     "tags": [
-      "IRECs"
+      "iRECs"
     ],
     "summary": "Obter informações detalhadas de um IREC",
     "parameters": [

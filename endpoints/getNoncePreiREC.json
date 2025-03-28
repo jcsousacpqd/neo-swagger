@@ -1,7 +1,7 @@
 {
   "get": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Obtém o índice do nonce para um ativo específico",
     "parameters": [

@@ -3,26 +3,16 @@
     "tags": [
       "iRECs"
     ],
-    "summary": "Queimar um IREC da carteira de um usuário",
+    "summary": "Transferência de IRECs entre usuários",
     "parameters": [
       {
         "name": "userId",
         "in": "path",
         "required": true,
-        "description": "ID do usuário",
+        "description": "ID do usuário que está enviando os tokens",
         "schema": {
           "type": "string",
           "example": "01"
-        }
-      },
-      {
-        "name": "tokenId",
-        "in": "path",
-        "required": true,
-        "description": "ID do token IREC a ser queimado",
-        "schema": {
-          "type": "string",
-          "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
         }
       }
     ],
@@ -33,14 +23,38 @@
           "schema": {
             "type": "object",
             "properties": {
-              "value": {
-                "type": "number",
-                "description": "Quantidade do IREC a ser queimada",
-                "example": 30
+              "receiverId": {
+                "type": "string",
+                "description": "ID do usuário que irá receber os IRECs",
+                "example": "02"
+              },
+              "tokensIds": {
+                "type": "array",
+                "description": "IDs dos tokens IREC que serão transferidos",
+                "items": {
+                  "type": "integer"
+                },
+                "example": [
+                  8,
+                  10
+                ]
+              },
+              "values": {
+                "type": "array",
+                "description": "Valores correspondentes a serem transferidos para cada token",
+                "items": {
+                  "type": "number"
+                },
+                "example": [
+                  5,
+                  5
+                ]
               }
             },
             "required": [
-              "value"
+              "receiverId",
+              "tokensIds",
+              "values"
             ]
           }
         }
@@ -48,7 +62,7 @@
     },
     "responses": {
       "200": {
-        "description": "IREC queimado com sucesso",
+        "description": "Transferência realizada com sucesso",
         "content": {
           "application/json": {
             "schema": {
@@ -56,8 +70,8 @@
               "properties": {
                 "transactionId": {
                   "type": "string",
-                  "description": "Identificador da transação de queima",
-                  "example": "burn_tx_irec_67890"
+                  "description": "Identificador da transação de transferência",
+                  "example": "tx_irec_transfer_98765"
                 },
                 "status": {
                   "type": "string",
@@ -65,7 +79,7 @@
                     "SUCCESS",
                     "FAILED"
                   ],
-                  "description": "Status da operação",
+                  "description": "Status da transferência",
                   "example": "SUCCESS"
                 }
               }
@@ -74,7 +88,7 @@
         }
       },
       "400": {
-        "description": "Requisição inválida (ex: quantidade maior do que disponível)",
+        "description": "Requisição inválida (ex: valores inconsistentes, saldo insuficiente)",
         "content": {
           "application/json": {
             "schema": {
@@ -82,7 +96,7 @@
               "properties": {
                 "error": {
                   "type": "string",
-                  "example": "Quantidade a ser queimada excede o saldo do IREC"
+                  "example": "Saldo insuficiente para o token 10"
                 }
               }
             }
@@ -90,7 +104,7 @@
         }
       },
       "404": {
-        "description": "Token IREC ou usuário não encontrado",
+        "description": "Usuário ou token não encontrado",
         "content": {
           "application/json": {
             "schema": {
@@ -98,7 +112,7 @@
               "properties": {
                 "error": {
                   "type": "string",
-                  "example": "IREC não encontrado para o tokenId informado"
+                  "example": "Token IREC não encontrado"
                 }
               }
             }

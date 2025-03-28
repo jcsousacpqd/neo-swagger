@@ -1,45 +1,50 @@
 {
   "post": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Compra um pré-IREC (Pre IREC)",
     "parameters": [
       {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário que está comprando o ativo",
+        "schema": {
+          "type": "string",
+          "example": "01"
+        }
+      },
+      {
         "name": "tokenId",
         "in": "path",
         "required": true,
-        "description": "ID do usuário que quer contratar o ativo",
+        "description": "ID do token do pré-IREC a ser comprado",
         "schema": {
           "type": "string",
-          "example": "31"
+          "example": "c4deee30-d333-4ac0-bcd9-b4681ad7a59a"
         }
       }
     ],
     "requestBody": {
+      "required": true,
       "content": {
         "application/json": {
           "schema": {
             "type": "object",
             "properties": {
-              "tokenId": {
-                "type": "string",
-                "description": "ID do token a ser comprado",
-                "example": "30a91697-460d-4783-a1e3-d72cf83c0bd1"
-              },
               "amount": {
                 "type": "integer",
                 "description": "Quantidade do ativo a ser comprada",
                 "example": 200
               },
               "price": {
-                "type": "string",
-                "description": "Preço do ativo",
-                "example": "1"
+                "type": "number",
+                "description": "Preço do ativo (por unidade ou total)",
+                "example": 10
               }
             },
             "required": [
-              "tokenId",
               "amount",
               "price"
             ]

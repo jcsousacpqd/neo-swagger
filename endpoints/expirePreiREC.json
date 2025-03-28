@@ -1,7 +1,7 @@
 {
   "post": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Expirar ofertas de pré-IREC com base em uma data",
     "requestBody": {

@@ -1,0 +1,82 @@
+{
+  "get": {
+    "tags": [
+      "iRECs"
+    ],
+    "summary": "Obter todos os saldos de IRECs por ID do usuário",
+    "parameters": [
+      {
+        "name": "userId",
+        "in": "path",
+        "required": true,
+        "description": "ID do usuário cuja carteira de IRECs será consultada",
+        "schema": {
+          "type": "string",
+          "example": "02"
+        }
+      }
+    ],
+    "responses": {
+      "200": {
+        "description": "Saldos de IRECs retornados com sucesso",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "tokenId": {
+                    "type": "string",
+                    "description": "ID do token IREC",
+                    "example": "8"
+                  },
+                  "amount": {
+                    "type": "number",
+                    "description": "Quantidade disponível na carteira",
+                    "example": 100
+                  },
+                  "energySource": {
+                    "type": "string",
+                    "description": "Fonte de energia do IREC",
+                    "example": "SOLAR"
+                  },
+                  "originPlace": {
+                    "type": "string",
+                    "description": "Origem do IREC",
+                    "example": "Campinas"
+                  },
+                  "mintDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Data de mintagem do IREC",
+                    "example": "2025-02-15T10:00:00Z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "404": {
+        "description": "Nenhum saldo de IRECs encontrado para o usuário",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string",
+                  "example": "Usuário não possui IRECs em carteira"
+                }
+              }
+            }
+          }
+        }
+      },
+      "500": {
+        "$ref": "../schemas/genericResponses/internalServerError.json"
+      }
+    }
+  }
+}

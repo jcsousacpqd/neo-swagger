@@ -1,7 +1,7 @@
 {
   "get": {
     "tags": [
-      "Assets"
+      "Pre-iRECs"
     ],
     "summary": "Obter ofertas de pré-IRECs expiradas por data",
     "parameters": [
